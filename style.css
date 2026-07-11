@@ -1,0 +1,1123 @@
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+:root {
+  --background: #fff8f7;
+  --background-soft: #fff0ef;
+  --card: rgba(255, 255, 255, 0.78);
+  --white: #ffffff;
+
+  --text: #30272e;
+  --muted: #766970;
+
+  --pink: #ee7889;
+  --pink-dark: #df5d72;
+  --pink-light: #f9b9c2;
+  --pink-pale: #ffe4e7;
+
+  --border: rgba(238, 120, 137, 0.18);
+  --shadow: 0 24px 70px rgba(111, 67, 77, 0.12);
+
+  --radius-large: 34px;
+  --radius-medium: 24px;
+  --radius-small: 16px;
+
+  --reason-duration: 5000ms;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(249, 185, 194, 0.24),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 217, 221, 0.35),
+      transparent 36%
+    ),
+    var(--background);
+
+  color: var(--text);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.section {
+  width: min(1120px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  margin-bottom: 12px;
+  color: var(--pink-dark);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.background-hearts {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.background-hearts span {
+  position: absolute;
+  color: rgba(238, 120, 137, 0.2);
+  font-size: 32px;
+  animation: floatingHeart 9s ease-in-out infinite;
+}
+
+.background-hearts span:nth-child(1) {
+  top: 12%;
+  left: 6%;
+}
+
+.background-hearts span:nth-child(2) {
+  top: 24%;
+  right: 8%;
+  animation-delay: 1s;
+}
+
+.background-hearts span:nth-child(3) {
+  top: 58%;
+  left: 4%;
+  animation-delay: 2s;
+}
+
+.background-hearts span:nth-child(4) {
+  right: 5%;
+  bottom: 14%;
+  animation-delay: 3s;
+}
+
+.background-hearts span:nth-child(5) {
+  top: 72%;
+  left: 28%;
+  animation-delay: 4s;
+}
+
+.background-hearts span:nth-child(6) {
+  top: 8%;
+  right: 34%;
+  animation-delay: 5s;
+}
+
+/* მთავარი ეკრანი */
+
+.hero {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding-block: 48px;
+}
+
+.hero-content {
+  width: min(720px, 100%);
+  padding: 64px 34px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  text-align: center;
+  backdrop-filter: blur(18px);
+}
+
+.small-heart {
+  display: inline-grid;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--pink-pale);
+  color: var(--pink-dark);
+  font-size: 25px;
+}
+
+.hero h1 {
+  max-width: 620px;
+  margin-inline: auto;
+  font-size: clamp(42px, 8vw, 78px);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+}
+
+.hero h1 span,
+.photo-text h2 span,
+.modal-card h2 span {
+  color: var(--pink-dark);
+}
+
+.hero-description {
+  max-width: 500px;
+  margin: 24px auto 38px;
+  color: var(--muted);
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.8;
+}
+
+.hero-description strong {
+  color: var(--text);
+}
+
+.gift-button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gift-button-text {
+  padding: 14px 26px;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    var(--pink),
+    var(--pink-dark)
+  );
+
+  box-shadow: 0 14px 30px rgba(223, 93, 114, 0.25);
+  color: var(--white);
+  font-weight: 800;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.gift-button:hover .gift-button-text {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 34px rgba(223, 93, 114, 0.32);
+}
+
+.gift-box {
+  position: relative;
+  display: block;
+  width: 150px;
+  height: 136px;
+  animation: giftFloat 2.6s ease-in-out infinite;
+}
+
+.gift-body {
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+  width: 120px;
+  height: 94px;
+  border-radius: 10px 10px 18px 18px;
+
+  background: linear-gradient(
+    145deg,
+    #f9b4be,
+    #ef8192
+  );
+
+  box-shadow: 0 24px 34px rgba(177, 88, 101, 0.2);
+}
+
+.gift-lid {
+  position: absolute;
+  z-index: 3;
+  top: 29px;
+  left: 5px;
+  width: 140px;
+  height: 36px;
+  border-radius: 11px;
+
+  background: linear-gradient(
+    145deg,
+    #ffc8cf,
+    #f493a2
+  );
+
+  transition:
+    transform 0.6s ease,
+    top 0.6s ease;
+}
+
+.gift-ribbon-vertical {
+  position: absolute;
+  z-index: 4;
+  left: 64px;
+  bottom: 0;
+  width: 22px;
+  height: 123px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.gift-ribbon-horizontal {
+  position: absolute;
+  z-index: 4;
+  top: 39px;
+  left: 5px;
+  width: 140px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.gift-bow {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  width: 48px;
+  height: 37px;
+  border: 12px solid #f18697;
+  background: transparent;
+}
+
+.gift-bow-left {
+  left: 30px;
+  border-radius: 50% 50% 12% 50%;
+  transform: rotate(18deg);
+}
+
+.gift-bow-right {
+  right: 30px;
+  border-radius: 50% 50% 50% 12%;
+  transform: rotate(-18deg);
+}
+
+.gift-button.opening .gift-lid {
+  top: -30px;
+  transform: rotate(-12deg);
+}
+
+.gift-button.opening .gift-box {
+  animation: giftOpen 0.75s ease;
+}
+
+.tiny-note {
+  margin-top: 26px;
+  color: #a38f98;
+  font-size: 13px;
+}
+
+/* გახსნის შემდეგ */
+
+.gift-content {
+  display: none;
+}
+
+.gift-content.visible {
+  display: block;
+}
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.reveal-item.visible {
+  animation: revealSection 0.75s ease forwards;
+}
+
+/* ფოტო */
+
+.photo-section {
+  display: grid;
+  grid-template-columns: 1fr 0.82fr;
+  align-items: center;
+  gap: 72px;
+  padding-block: 100px 55px;
+}
+
+.photo-text h2 {
+  max-width: 560px;
+  margin-bottom: 22px;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.photo-text > p:last-child {
+  max-width: 540px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.85;
+}
+
+.polaroid {
+  position: relative;
+  padding: 16px 16px 28px;
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 28px 70px rgba(79, 53, 61, 0.18);
+  transform: rotate(3deg);
+}
+
+.polaroid::before {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 105px;
+  height: 34px;
+  background: rgba(246, 174, 184, 0.55);
+  content: "";
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.photo-wrapper {
+  position: relative;
+  aspect-ratio: 4 / 4.5;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--background-soft);
+}
+
+.photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-fallback {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  color: var(--pink-dark);
+  text-align: center;
+}
+
+.photo-fallback span {
+  font-size: 70px;
+}
+
+.photo-fallback p {
+  font-weight: 700;
+}
+
+.polaroid > p {
+  margin-top: 22px;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* შემდეგი სექციის ღილაკი */
+
+.next-section-wrapper {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  padding-top: 25px;
+  text-align: center;
+}
+
+.next-section-wrapper > p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.next-section-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 22px;
+  border: 1px solid rgba(238, 120, 137, 0.32);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 12px 28px rgba(111, 67, 77, 0.1);
+  color: var(--pink-dark);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 800;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.next-section-button:hover {
+  background: var(--white);
+  box-shadow: 0 16px 34px rgba(111, 67, 77, 0.15);
+  transform: translateY(-3px);
+}
+
+.down-arrow {
+  display: inline-block;
+  font-size: 21px;
+  line-height: 1;
+  animation: arrowBounce 1.3s ease-in-out infinite;
+}
+
+/* მიზეზები */
+
+.reasons-section {
+  padding-block: 70px 110px;
+  scroll-margin-top: 20px;
+}
+
+.section-heading {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.section-heading > span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--pink);
+  font-size: 34px;
+}
+
+.section-heading h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  letter-spacing: -0.04em;
+}
+
+.reason-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.reason-button {
+  --border-angle: 0deg;
+
+  position: relative;
+  z-index: 1;
+  min-height: 134px;
+  overflow: hidden;
+  padding: 20px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 750;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/*
+  აქტიური ბარათის ბორდერი მთლიანად შემოუვლის.
+*/
+
+.reason-button::before {
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  padding: 3px;
+  border-radius: inherit;
+
+  background: conic-gradient(
+    from -90deg,
+    var(--pink-dark) 0deg,
+    var(--pink) var(--border-angle),
+    transparent var(--border-angle),
+    transparent 360deg
+  );
+
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  mask-composite: exclude;
+}
+
+.reason-button.active::before {
+  opacity: 1;
+  animation: fullBorderProgress var(--reason-duration) linear forwards;
+}
+
+.reason-button-icon,
+.reason-button-title {
+  position: relative;
+  z-index: 3;
+}
+
+.reason-button-icon {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--pink-dark);
+  font-size: 30px;
+}
+
+.reason-button-title {
+  display: block;
+}
+
+.reason-button:hover,
+.reason-button.active {
+  border-color: rgba(238, 120, 137, 0.24);
+  background: var(--white);
+  box-shadow: 0 16px 32px rgba(112, 69, 78, 0.1);
+  transform: translateY(-5px);
+}
+
+.reason-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 24px;
+  max-width: 780px;
+  min-height: 190px;
+  margin: 34px auto 0;
+  padding: 34px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.94),
+    rgba(255, 236, 239, 0.9)
+  );
+
+  box-shadow: var(--shadow);
+}
+
+.reason-icon {
+  display: grid;
+  width: 92px;
+  height: 92px;
+  place-items: center;
+  border-radius: 30px;
+
+  background: linear-gradient(
+    145deg,
+    var(--pink-light),
+    var(--pink)
+  );
+
+  box-shadow: 0 16px 32px rgba(223, 93, 114, 0.22);
+  color: var(--white);
+  font-size: 40px;
+}
+
+.reason-card h3 {
+  margin-bottom: 10px;
+  font-size: 26px;
+}
+
+.reason-card p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+/* წერილი */
+
+.letter-section {
+  padding-bottom: 110px;
+}
+
+.letter-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 860px;
+  margin-inline: auto;
+  padding: 58px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.letter-decoration {
+  position: absolute;
+  top: -42px;
+  right: -35px;
+  display: grid;
+  width: 170px;
+  height: 170px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--pink-pale);
+  color: rgba(223, 93, 114, 0.42);
+  font-size: 85px;
+}
+
+.letter-card h2 {
+  position: relative;
+  margin-bottom: 24px;
+  font-size: clamp(36px, 5vw, 54px);
+}
+
+.letter-card h2 span {
+  color: var(--pink-dark);
+}
+
+.letter-card > p:not(.eyebrow):not(.signature) {
+  position: relative;
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 2;
+}
+
+.signature {
+  position: relative;
+  margin-top: 32px;
+  color: var(--pink-dark);
+  font-size: 18px;
+}
+
+/* ბოლო სექცია */
+
+.final-section {
+  padding: 80px 32px;
+  border-radius: var(--radius-large);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.82),
+      rgba(255, 225, 229, 0.9)
+    );
+
+  text-align: center;
+}
+
+.final-section h2 {
+  margin-bottom: 30px;
+  font-size: clamp(34px, 5vw, 54px);
+}
+
+.final-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 28px;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    var(--pink),
+    var(--pink-dark)
+  );
+
+  box-shadow: 0 16px 34px rgba(223, 93, 114, 0.28);
+  color: var(--white);
+  cursor: pointer;
+  font-weight: 850;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.final-button:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(223, 93, 114, 0.35);
+}
+
+.final-button span {
+  font-size: 20px;
+}
+
+footer {
+  padding: 42px 20px;
+  color: #9b8891;
+  text-align: center;
+}
+
+footer span {
+  color: var(--pink-dark);
+}
+
+/* ფინალური ფანჯარა */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  place-items: center;
+  padding: 20px;
+}
+
+.modal.visible {
+  display: grid;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(41, 28, 34, 0.62);
+  backdrop-filter: blur(12px);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-card {
+  position: relative;
+  z-index: 2;
+  width: min(590px, 100%);
+  padding: 54px 34px;
+  border-radius: var(--radius-large);
+  background: var(--white);
+  box-shadow: 0 34px 90px rgba(30, 16, 22, 0.3);
+  text-align: center;
+  animation: modalPop 0.45s ease forwards;
+}
+
+.close-modal {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--background-soft);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 27px;
+}
+
+.big-heart {
+  margin-bottom: 20px;
+  color: var(--pink-dark);
+  font-size: 86px;
+  animation: heartBeat 1.2s ease-in-out infinite;
+}
+
+.modal-card h2 {
+  margin-bottom: 20px;
+  font-size: clamp(34px, 6vw, 54px);
+  line-height: 1.13;
+  letter-spacing: -0.04em;
+}
+
+.modal-card > p:last-child {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* JavaScript-ით შექმნილი გულები */
+
+.confetti-heart {
+  position: fixed;
+  z-index: 150;
+  top: -40px;
+  pointer-events: none;
+  animation: heartFall linear forwards;
+}
+
+/* ანიმაციები */
+
+@keyframes giftFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes giftOpen {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.08) rotate(3deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes floatingHeart {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-22px) rotate(12deg);
+  }
+}
+
+@keyframes revealSection {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes arrowBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes fullBorderProgress {
+  from {
+    --border-angle: 0deg;
+  }
+
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes heartFall {
+  from {
+    opacity: 1;
+    transform: translateY(-40px) rotate(0deg);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(110vh) rotate(540deg);
+  }
+}
+
+/* პლანშეტი */
+
+@media (max-width: 900px) {
+  .photo-section {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .photo-text {
+    text-align: center;
+  }
+
+  .photo-text h2,
+  .photo-text > p:last-child {
+    margin-inline: auto;
+  }
+
+  .polaroid {
+    width: min(480px, 88%);
+    margin-inline: auto;
+  }
+
+  .reason-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reason-button:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ტელეფონი */
+
+@media (max-width: 600px) {
+  .section {
+    width: min(100% - 22px, 1120px);
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding-block: 18px;
+  }
+
+  .hero-content {
+    padding: 46px 20px;
+    border-radius: 28px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+
+  .hero-description {
+    margin-block: 20px 30px;
+    font-size: 16px;
+  }
+
+  .gift-box {
+    transform: scale(0.9);
+  }
+
+  .photo-section {
+    gap: 48px;
+    padding-block: 80px 45px;
+  }
+
+  .photo-text h2 {
+    font-size: 42px;
+  }
+
+  .polaroid {
+    width: 92%;
+  }
+
+  .next-section-wrapper {
+    padding-top: 10px;
+  }
+
+  .reasons-section {
+    padding-block: 55px 90px;
+  }
+
+  .reason-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .reason-button:last-child {
+    grid-column: auto;
+  }
+
+  .reason-button {
+    display: flex;
+    min-height: 78px;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    text-align: left;
+  }
+
+  .reason-button-icon {
+    width: 40px;
+    margin: 0;
+    text-align: center;
+  }
+
+  .reason-card {
+    grid-template-columns: 1fr;
+    padding: 26px;
+    text-align: center;
+  }
+
+  .reason-icon {
+    margin-inline: auto;
+  }
+
+  .letter-card {
+    padding: 42px 24px;
+  }
+
+  .letter-decoration {
+    width: 130px;
+    height: 130px;
+    font-size: 62px;
+  }
+
+  .final-section {
+    padding: 64px 20px;
+  }
+
+  .modal-card {
+    padding: 48px 22px 38px;
+  }
+}
+
+/* ნაკლები ანიმაციის რეჟიმი */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

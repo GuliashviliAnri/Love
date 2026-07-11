@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="პატარა სიყვარულით შექმნილი საჩუქარი"
+  />
+
+  <title>პატარა საჩუქარი შენთვის ❤️</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="background-hearts" aria-hidden="true">
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+  </div>
+
+  <main>
+    <!-- პირველი ეკრანი -->
+    <section class="hero section">
+      <div class="hero-content">
+        <span class="small-heart">♡</span>
+
+        <p class="eyebrow">პატარა რაღაც მაქვს...</p>
+
+        <h1>
+          შენთვის პატარა
+          <span>საჩუქარი</span>
+        </h1>
+
+        <p class="hero-description">
+          ეს გვერდი მხოლოდ შენთვის შევქმენი,
+          <strong id="heroName">ჩემო საყვარელო</strong>.
+        </p>
+
+        <button
+          id="openGiftButton"
+          class="gift-button"
+          type="button"
+          aria-label="საჩუქრის გახსნა"
+        >
+          <span class="gift-box" aria-hidden="true">
+            <span class="gift-lid"></span>
+            <span class="gift-body"></span>
+            <span class="gift-ribbon-vertical"></span>
+            <span class="gift-ribbon-horizontal"></span>
+            <span class="gift-bow gift-bow-left"></span>
+            <span class="gift-bow gift-bow-right"></span>
+          </span>
+
+          <span class="gift-button-text">
+            დააჭირე საჩუქარს
+          </span>
+        </button>
+
+        <p class="tiny-note">სიყვარულით შენთვის ♡</p>
+      </div>
+    </section>
+
+    <!-- ყუთის გახსნის შემდეგ გამოჩნდება -->
+    <div id="giftContent" class="gift-content" aria-hidden="true">
+      <!-- ფოტო -->
+      <section
+        id="photoSection"
+        class="photo-section section reveal-item"
+      >
+        <div class="photo-text">
+          <p class="eyebrow">იცი, რატომ ხარ</p>
+
+          <h2>
+            ჩემთვის ასეთი
+            <span>განსაკუთრებული?</span>
+          </h2>
+
+          <p>
+            იმიტომ, რომ შენთან მეტად მშვიდად ვგრძნობ თავს, მაბედნიერებ
+            და მიყვარხარ.
+          </p>
+        </div>
+
+        <div class="polaroid">
+          <div class="photo-wrapper">
+            <img
+              src="Medo.jpeg"
+              alt="ჩემი საყვარელი ფოტო"
+              id="mainPhoto"
+            />
+
+            <div class="photo-fallback" id="photoFallback">
+              <span>♡</span>
+              <p>აქ ჩასვი თქვენი ფოტო</p>
+            </div>
+          </div>
+
+          <p>ჩემი საყვარელი ადამიანი ხარ ♡</p>
+        </div>
+
+        <!-- შემდეგ სექციაზე გადასვლის ღილაკი -->
+        <div class="next-section-wrapper">
+          <p>კიდევ რაღაც უნდა გაჩვენო</p>
+
+          <button
+            id="nextSectionButton"
+            class="next-section-button"
+            type="button"
+            aria-label="შემდეგ სექციაზე გადასვლა"
+          >
+            <span>შემდეგი</span>
+            <span class="down-arrow">↓</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- მიზეზების არჩევა -->
+      <section
+        id="reasonsSection"
+        class="reasons-section section reveal-item"
+      >
+        <div class="section-heading">
+          <span>♡</span>
+          <p class="eyebrow">აირჩიე ერთი</p>
+          <h2>რატომ მიყვარხარ</h2>
+        </div>
+
+        <div class="reason-buttons">
+          <button
+            class="reason-button active"
+            type="button"
+            data-title="შენი ღიმილი"
+            data-text="შენი ღიმილი ყველაზე ლამაზი რამაა, რაც კი მინახავს და ყოველთვის შევეცდები, შენს სახეზე ხშირად დავინახო ეგ ღიმილი."
+            data-icon="☺"
+          >
+            <span class="reason-button-icon">☺</span>
+            <span class="reason-button-title">შენი ღიმილი</span>
+          </button>
+
+          <button
+            class="reason-button"
+            type="button"
+            data-title="შენი თვალები"
+            data-text="შენს თვალებში სიმშვიდეს, სითბოს და ჩემს საყვარელ სამყაროს ვხედავ. ვგიჟდები შენს ულამაზეს თვალებზე."
+            data-icon="♡"
+          >
+            <span class="reason-button-icon">◉</span>
+            <span class="reason-button-title">შენი თვალები</span>
+          </button>
+
+          <button
+            class="reason-button"
+            type="button"
+            data-title="შენი ხასიათი"
+            data-text="მიყვარს შენი სიჯიუტე, ბუზღუნი, გულწრფელობა და ის, რომ ყოველთვის შენ ხარ."
+            data-icon="✦"
+          >
+            <span class="reason-button-icon">✦</span>
+            <span class="reason-button-title">შენი ხასიათი</span>
+          </button>
+
+          <button
+            class="reason-button"
+            type="button"
+            data-title="ჩვენი მოგონებები"
+            data-text="ჩვენი ამდენი წლიანი მოგონებები ჩემი ცხოვრების ყველაზე ძვირფასი ნაწილია, რადგან მეგობრობით დაიწყო."
+            data-icon="∞"
+          >
+            <span class="reason-button-icon">∞</span>
+            <span class="reason-button-title">ჩვენი მოგონებები</span>
+          </button>
+
+          <button
+            class="reason-button"
+            type="button"
+            data-title="უბრალოდ შენ"
+            data-text="არ მჭირდება განსაკუთრებული მიზეზი, მიყვარხარ იმიტომ, რომ შენ ხარ."
+            data-icon="♥"
+          >
+            <span class="reason-button-icon">♥</span>
+            <span class="reason-button-title">უბრალოდ შენ</span>
+          </button>
+        </div>
+
+        <article class="reason-card" id="reasonCard">
+          <div class="reason-icon" id="reasonIcon">☺</div>
+
+          <div>
+            <h3 id="reasonTitle">შენი ღიმილი</h3>
+
+            <p id="reasonText">
+              შენი ღიმილი ყველაზე ჩვეულებრივ დღესაც კი
+              განსაკუთრებულად აქცევს.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <!-- პატარა წერილი -->
+      <section class="letter-section section reveal-item">
+        <div class="letter-card">
+          <div class="letter-decoration">
+            <span>♡</span>
+          </div>
+
+          <p class="eyebrow">პატარა წერილი შენთვის</p>
+
+          <h2>
+            ჩემო <span id="letterName">საყვარელო</span>,
+          </h2>
+
+          <p id="loveLetter">
+            მადლობა ყველა იმ ღიმილისთვის, სიმშვიდისთვის
+            და სითბოსთვის, რომელიც ჩემს ცხოვრებაში შემოგაქვს.
+            შენთან გატარებული ყოველი წამი ჩემთვის ძალიან ძვირფასია.
+            ძალიან ბევრს ნიშნავ ჩემთვის, მაბედნიერებ და ჩემი ცხოვრების ყველაზე მნიშვნელოვანი ნაწილი ხარ.
+            ერთი ნახვით შემიყვარდი და ყველაზე მეტად ეგ მიხარია, რომ ჩემი სიყვარული ცალხმრივი არ აღმონჩდა.
+            "გულს მხოლოდ ერთხელ უყვარდება" - ამ ფრაზის ერთ-ერთი მაგალითი შენ ხარ.
+          </p>
+
+          <p class="signature">
+            სიყვარულით,
+            <strong id="senderName">შენი ადამიანი</strong>
+            ♡
+          </p>
+        </div>
+      </section>
+
+      <!-- ფინალური სიურპრიზი -->
+      <section class="final-section section reveal-item">
+        <p class="eyebrow">კიდევ ერთი პატარა რამ...</p>
+
+        <h2>გინდა მთავარი გაიგო?</h2>
+
+        <button
+          id="finalSurpriseButton"
+          class="final-button"
+          type="button"
+        >
+          <span>♥</span>
+          დააჭირე აქ
+        </button>
+      </section>
+
+      <footer>
+        <p>
+          შექმნილია სიყვარულით
+          <span>♡</span>
+        </p>
+      </footer>
+    </div>
+  </main>
+
+  <!-- ფინალური ფანჯარა -->
+  <div
+    id="surpriseModal"
+    class="modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <div class="modal-overlay"></div>
+
+    <div class="modal-card">
+      <button
+        id="closeModalButton"
+        class="close-modal"
+        type="button"
+        aria-label="დახურვა"
+      >
+        ×
+      </button>
+
+      <div class="big-heart">♥</div>
+
+      <p class="eyebrow">მთავარი კი ის არის, რომ...</p>
+
+      <h2 id="modalTitle">
+        ყველაზე ლამაზი რამ ჩემს ცხოვრებაში
+        <span>შენ ხარ.</span>
+      </h2>
+
+      <p>
+        მიყვარხარ,
+        <strong id="modalName">ჩემო საყვარელო</strong>
+        ♡
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
